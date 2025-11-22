@@ -2,34 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why I Love You ❤️</title>
+    <title>Why I Love You 💗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
+<div class="hearts-area"></div>
 
+<div id="loader" class="loader">
+    <div class="loader-title">For Urmi ❤️</div>
+    <div class="loader-sub">Counting reasons I love you…</div>
+</div>
+
+<div class="card">
     <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="secret.html">Secret</a>
+        <a href="secret.html">Secret Note</a>
         <a href="reasons.html" class="active">Why I Love You</a>
     </nav>
 
-    <h1>Why I Love You ❤️</h1>
+    <div class="tag">Too much pyaar ahead</div>
 
-    <ul class="reasons">
-        <li>Your smile 😭💗</li>
-        <li>Your vibe</li>
-        <li>Your heart</li>
-        <li>Your kindness</li>
-        <li>Your energy</li>
-        <li>The way you talk</li>
-        <li>The way you care</li>
-        <li>Everything… literally everything</li>
-    </ul>
+    <h1>Reasons I Love You 🫶</h1>
 
+    <p class="subtitle">
+        Not in any order because honestly… sabhi no.1 hain.
+    </p>
+
+    <p class="line">• The way you say “hmm” cuts half of my stress in 0.1 seconds.</p>
+    <p class="line">• Tumhari smile? Straight-up therapy. Free, premium, daily. 😌</p>
+    <p class="line">• You don’t even try, and still you’re the <span class="highlight">prettiest part of my day</span>.</p>
+    <p class="line">• Jab tum care karti ho, it feels like “home” I never knew I needed.</p>
+    <p class="line">• And haan… you’re not just my crush,  
+        you’re my <span class="highlight">full-time obsession</span>. 💗</p>
+
+    <p class="line">Bonus reason: tum ho to future thoda kam scary aur bohot zyada cute lagta hai.</p>
+
+    <div class="next-row" onclick="goNextFromReasons()">
+        <span class="clap">👏</span>
+        <span>Tap the clap to go back to the first page</span>
+    </div>
+
+    <div class="footer">
+        Forever yours,  
+        <span class="highlight">Aashu</span>
+    </div>
 </div>
 
+<script>
+    function startHearts() {
+        const area = document.querySelector('.hearts-area');
+        if (!area) return;
+        setInterval(() => {
+            const span = document.createElement('span');
+            span.className = 'floating-heart';
+            span.textContent = Math.random() > 0.4 ? '💞' : '💗';
+            span.style.left = Math.random() * 100 + '%';
+            span.style.animationDuration = (4 + Math.random() * 4) + 's';
+            area.appendChild(span);
+            setTimeout(() => span.remove(), 8000);
+        }, 800);
+    }
+
+    window.addEventListener('load', () => {
+        startHearts();
+        const loader = document.getElementById('loader');
+        setTimeout(() => loader.classList.add('hide'), 900);
+    });
+
+    function goNextFromReasons() {
+        window.location.href = 'index.html';
+    }
+</script>
 </body>
 </html>
