@@ -2,46 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Urmi ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
+<div class="hearts-area"></div>
 
+<div id="loader" class="loader">
+    <div class="loader-title">For Urmi ❤️</div>
+    <div class="loader-sub">Loading extra pyaar just for you…</div>
+</div>
+
+<div class="card">
     <nav class="nav">
         <a href="index.html" class="active">Home</a>
-        <a href="secret.html">Secret</a>
+        <a href="secret.html">Secret Note</a>
         <a href="reasons.html">Why I Love You</a>
     </nav>
 
-    <div class="tag">For my girl ✨</div>
+    <div class="tag">For my girl — Urmi</div>
 
     <h1>Hi Urmi ❤️</h1>
 
     <p class="subtitle">
-        One website.<br>
-        One guy.<br>
-        One purpose — to tell you how much you mean to me.
+        One website. One boy. One mission —
+        to remind you again and again that
+        <span class="highlight">I’m madly in love with you.</span>
     </p>
 
-    <div class="heart" onclick="goSecret()">💗</div>
+    <p class="subtitle" style="margin-top:-6px; opacity:0.8;">
+        Tap the heart to start the magic (and music) 😌
+    </p>
 
-    <p class="line">Every day you make my world brighter.</p>
+    <div class="heart" onclick="openPopup()">💖</div>
 
-    <div class="next-row" onclick="goSecret()">
+    <p class="line">Tum chat pe aati ho, aur mera pura mood hi reset ho jata hai.</p>
+    <p class="line">Some people are “nice”… but you’re my <span class="highlight">safe place</span>.</p>
+    <p class="line">Low-key? I re-read our chats just to feel you a little closer. 😌</p>
+
+    <div class="next-row" onclick="goNextFromHome()">
         <span class="clap">👏</span>
-        <span class="open-text">Tap to open next page</span>
+        <span>Tap the clap to open the next page</span>
     </div>
 
+    <div class="footer">
+        made with a stupid amount of love by
+        <span class="highlight">Aashu</span>
+    </div>
 </div>
 
-<script>
-function goSecret() {
-    window.location.href = "secret.html";
-}
-</script>
+<!-- Popup -->
+<div class="overlay" id="lovePopup">
+    <div class="popup-card">
+        <div class="popup-title">A small truth 😳❤️</div>
 
+        <p class="popup-line">You’re not just “my gf”.</p>
+        <p class="popup-line">You’re my <span class="highlight">favourite notification</span>,</p>
+        <p class="popup-line">my <span class="highlight">daily crush</span>,</p>
+        <p class="popup-line">and my <span class="highlight">future comfort person</span>.</p>
+
+        <div class="btn-row">
+            <button class="btn" onclick="closePopup()">Aww 😳</button>
+            <button class="btn" onclick="closePopup()">I love you too 💗</button>
+        </div>
+    </div>
+</div>
+
+<!-- Background music (upload your own file named music.mp3) -->
+<audio id="bg-music" src="music.mp3" loop></audio>
+
+<script>
+    // loader + hearts
+    function startHearts() {
+        const area = document.querySelector('.hearts-area');
+        if (!area) return;
+        setInterval(() => {
+            const span = document.createElement('span');
+            span.className = 'floating-heart';
+            span.textContent = Math.random() > 0.4 ? '💖' : '💗';
+            span.style.left = Math.random() * 100 + '%';
+            span.style.animationDuration = (4 + Math.random() * 4) + 's';
+            area.appendChild(span);
+            setTimeout(() => span.remove(), 8000);
+        }, 700);
+    }
+
+    window.addEventListener('load', () => {
+        startHearts();
+        const loader = document.getElementById('loader');
+        setTimeout(() => loader.classList.add('hide'), 1200);
+    });
+
+    // popup + music
+    const music = document.getElementById('bg-music');
+
+    function playMusic() {
+        if (music) {
+            music.play().catch(() => {});
+        }
+    }
+
+    function openPopup() {
+        document.getElementById('lovePopup').classList.add('show');
+        playMusic();
+    }
+    function closePopup() {
+        document.getElementById('lovePopup').classList.remove('show');
+    }
+
+    // clap → next page
+    function goNextFromHome() {
+        window.location.href = 'secret.html';
+    }
+</script>
 </body>
 </html>
