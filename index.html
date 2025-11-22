@@ -9,20 +9,36 @@
 <body>
 
 <div class="card">
+
+    <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="secret.html">Secret</a>
+        <a href="reasons.html">Why I Love You</a>
+    </nav>
+
+    <div class="tag">For my girl ✨</div>
+
     <h1>Hi Urmi ❤️</h1>
-    <p>You mean so much to me...  
-    I made this little page just for you 🫶</p>
 
-    <br><br>
+    <p class="subtitle">
+        One website.<br>
+        One guy.<br>
+        One purpose — to tell you how much you mean to me.
+    </p>
 
-    <div class="next-row" onclick="goNext()">
+    <div class="heart" onclick="goSecret()">💗</div>
+
+    <p class="line">Every day you make my world brighter.</p>
+
+    <div class="next-row" onclick="goSecret()">
         <span class="clap">👏</span>
-        <span class="open-text">Tap here to open the next page</span>
+        <span class="open-text">Tap to open next page</span>
     </div>
+
 </div>
 
 <script>
-function goNext() {
+function goSecret() {
     window.location.href = "secret.html";
 }
 </script>
